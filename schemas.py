@@ -24,8 +24,8 @@ class PostBase(BaseModel):
     content: str
     publication_date: datetime = Field(default_factory=datetime.now)
 
-    class Config:
-        orm_mode = True
+#    class Config:
+#        orm_mode = True
 
 
 class PostPartialUpdate(BaseModel):

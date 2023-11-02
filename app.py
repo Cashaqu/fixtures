@@ -46,8 +46,7 @@ async def list_posts(pagination: tuple[int, int] = Depends(pagination),
 @app.get("/posts/{id}", response_model=PostRead)
 async def get_post(post: Post = Depends(get_post_or_404)) -> Post:
     return post
-# async def get_post(post: Post = Depends(get_post_or_404)) -> PostRead:
-#     return PostRead(**post.__dict__)
+
 
 @app.post("/posts", response_model=PostRead, status_code=status.HTTP_201_CREATED)
 async def create_post(post_create: PostCreate,

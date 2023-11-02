@@ -1,6 +1,6 @@
 import requests
-import json
 
-response = requests.get('http://localhost:8000/posts/1')
-for post in response.json():
-    print(post)
+url = 'http://localhost:8000/posts?id=1'
+response = requests.get(url)
+print(response.json())
+print("Error:", response.status_code)

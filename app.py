@@ -24,7 +24,7 @@ async def pagination(skip: int = Query(0, ge=0), limit: int = Query(10, ge=0), )
 
 
 async def get_post_or_404(id: int, session: AsyncSession = Depends(get_async_session)) -> Post:
-    select_query = select(Post).where(Post.id == id)
+    select_query = (select(Post).where(Post.id == id).options(selectinload(Post.comments)))
     result = await session.execute(select_query)
     post = result.scalar_one_or_none()
     if post is None:
